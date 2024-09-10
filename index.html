@@ -6,6 +6,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Bon Chocolate</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .order-container {
+            display: none; /* Hide the table by default */
+        }
+        .no-orders-message {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -94,32 +104,7 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>  
-<h1 class="text-center mt-5">Promotion</h1>
 
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <img src="./img/logo.png" class="card-img-top" alt="White Chocolate">
-        <div class="card-body">
-          <h5 class="card-title">CLASS ROOM!</h5>
-          <p class="card-text">Discover our class of learning how to make cakes.</p>
-          <a href="#" class="btn btn-dark">More information</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card">
-        <img src="./img/6.png" class="card-img-top" alt="Dark Chocolate">
-        <div class="card-body">
-          <h5 class="card-title">Dark Chocolate</h5>
-          <p class="card-text">%30 promotion of second tablette.</p>
-          <a href="#" class="btn btn-dark">More information</a>
-        </div>
-      </div>
-    </div>
-    
 <h1 class="text-center mt-5">Catalogue</h1>
 
 <div class="container mt-4">
@@ -184,30 +169,64 @@
 </div>
 
 <h1 class="text-center mt-5">Orders</h1>
-<div class="invisible">
-<div class="container mt-4"></div>
-  <table class="table table-dark table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Product</th>
-        <th scope="col">Price</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>White Chocolate</td>
-        <td>$5.00</td>
-        <td>
-          <div class="input-group">
-            <button class="btn btn-outline-light" type="button" id="button-minus">-</button>
-            <input type="text" class="form-control text-center" value="1" aria-label="Quantity">
-            <button class="btn btn-outline-light" type="button" id="button-plus">+</button>
-          </div>
-</div>          
+
+<div class="container mt-4">
+  <!-- Button to toggle orders -->
+  <div class="text-center mb-4">
+    <button class="btn btn-primary" id="toggleOrders">Show Orders</button>
+  </div>
+
+  <!-- Message for no orders -->
+  <div class="no-orders-message" id="noOrdersMessage">
+    There are no orders.
+  </div>
+
+  <!-- Orders Table -->
+  <div class="order-container" id="ordersTable">
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Product</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>White Chocolate</td>
+          <td>$5.00</td>
+          <td>
+            <div class="input-group">
+              <button class="btn btn-outline-light" type="button" id="button-minus">-</button>
+              <input type="text" class="form-control text-center" value="1" aria-label="Quantity">
+              <button class="btn btn-outline-light" type="button" id="button-plus">+</button>
+            </div>
+          </td>
+          <td>$5.00</td>
+        </tr>
+       
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<script>
+  document.getElementById('toggleOrders').addEventListener('click', function() {
+    var ordersTable = document.getElementById('ordersTable');
+    var noOrdersMessage = document.getElementById('noOrdersMessage');
+    if (ordersTable.style.display === 'none') {
+      ordersTable.style.display = 'block';
+      noOrdersMessage.style.display = 'none';
+      this.textContent = 'Hide Orders';
+    } else {
+      ordersTable.style.display = 'none';
+      noOrdersMessage.style.display = 'block';
+      this.textContent = 'Show Orders';
+    }
+  });
+</script>
 </body>
 </html>
