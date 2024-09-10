@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Bon Chocolate</title>
     <link rel="stylesheet" href="style.css">
-    
+    <title>Bon Chocolate</title>
 </head>
 <body>
 <header>
@@ -34,22 +33,22 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Orders</a>
+              <a class="nav-link" href="#order">Orders</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">New Arrivals</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Promotions</a>
+              <a class="nav-link" href="#promotion">Promotions</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Catalogue</a>
               <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="#">White Chocolate</a></li>
-                <li><a class="dropdown-item" href="#">Dark Chocolate</a></li>
-                <li><a class="dropdown-item" href="#">Milk Chocolate</a></li>
-                <li><a class="dropdown-item" href="#">Chocolate Truffles</a></li>
-                <li><a class="dropdown-item" href="#">Artisanal Chocolate</a></li>
+                <li><a class="dropdown-item" href="#catalogue">White Chocolate</a></li>
+                <li><a class="dropdown-item" href="#catalogue">Dark Chocolate</a></li>
+                <li><a class="dropdown-item" href="#catalogue">Milk Chocolate</a></li>
+                <li><a class="dropdown-item" href="#catalogue">Chocolate Truffles</a></li>
+                <li><a class="dropdown-item" href="#catalogue">Artisanal Chocolate</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -68,14 +67,14 @@
       <img src="./img/logo.png" class="d-block w-100" alt="Bon Chocolate">
       <div class="carousel-caption">
         <button type="button" class="btn btn-secondary btn-lg">Sign Up</button>
-        <button type="button" class="btn btn-secondary btn-lg">Catalogue</button>
+        <a href="#catalogue"><button type="button" class="btn btn-secondary btn-lg">Catalogue</button></a>
       </div>   
     </div>
     <div class="carousel-item">
       <img src="./img/promotion.png" class="d-block w-100" alt="Promotion">
       <div class="carousel-caption">
         <h1><p class="text-center">Special promotions you don't want to miss!</p></h1>
-        <button type="button" class="btn btn-secondary btn-lg">Promotions</button>
+        <a href="#promotion"><button type="button" class="btn btn-secondary btn-lg">Promotions</button></a>
       </div>
     </div>
     <div class="carousel-item">
@@ -96,7 +95,7 @@
   </button>
 </div>  
 
-<h1 class="text-center mt-5">Promotion</h1>
+<h1 class="text-center mt-5" id="promotion">Promotion</h1>
 
 <div class="container mt-4">
   <div class="row">
@@ -124,7 +123,7 @@
   </div>
 </div>
 
-<h1 class="text-center mt-5">Catalogue</h1>
+<h1 class="text-center mt-5" id="catalogue">Catalogue</h1>
 
 <div class="container mt-4">
   <div class="row">
@@ -134,7 +133,8 @@
         <div class="card-body">
           <h5 class="card-title">White Chocolate</h5>
           <p class="card-text">Discover our creamy white chocolate, perfect for those who love subtle sweetness.</p>
-          <a href="#" class="btn btn-dark">Order</a>
+          <div class="d-grid gap-3 d-md-flex justify-content-md-end">price: 5.00€
+            <a href="#" class="btn btn-dark">Order</a></div>
         </div>
       </div>
     </div>
@@ -145,7 +145,8 @@
         <div class="card-body">
           <h5 class="card-title">Dark Chocolate</h5>
           <p class="card-text">An intense dark chocolate, rich in cocoa for an unforgettable taste experience.</p>
-          <a href="#" class="btn btn-dark">Order</a>
+          <div class="d-grid gap-3 d-md-flex justify-content-md-end">price: 7.00€
+            <a href="#" class="btn btn-dark">Order</a></div>
         </div>
       </div>
     </div>
@@ -156,7 +157,8 @@
         <div class="card-body">
           <h5 class="card-title">Milk Chocolate</h5>
           <p class="card-text">A smooth milk chocolate that melts in your mouth, loved by all ages.</p>
-          <a href="#" class="btn btn-dark">Order</a>
+          <div class="d-grid gap-3 d-md-flex justify-content-md-end">price: 6.00€
+          <a href="#" class="btn btn-dark">Order</a></div>
         </div>
       </div>
     </div>
@@ -169,7 +171,8 @@
         <div class="card-body">
           <h5 class="card-title">Chocolate Truffles</h5>
           <p class="card-text">Our chocolate truffles are a true delight for the senses, perfect for special occasions.</p>
-          <a href="#" class="btn btn-dark">Order</a>
+          <div class="d-grid gap-3 d-md-flex justify-content-md-end">price: 10.00€
+            <a href="#" class="btn btn-dark">Order</a></div>
         </div>
       </div>
     </div>
@@ -180,17 +183,19 @@
         <div class="card-body">
           <h5 class="card-title">Artisanal Chocolate</h5>
           <p class="card-text">Each piece is handcrafted, offering a unique touch to every bite.</p>
-          <a href="#" class="btn btn-dark">Order</a>
+          <div class="d-grid gap-3 d-md-flex justify-content-md-end">price: 12.00€
+            <a href="#" class="btn btn-dark">Order</a></div>
+          
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<h1 class="text-center mt-5">Orders</h1>
+<h1 class="text-center mt-5" id="order">Orders</h1>
 <div class="container mt-4">
   <!-- Button to toggle orders visibility -->
-  <div class="text-center mb-4">
+  <div class="text-center mb-4" id="ordersButtonContainer">
     <button class="btn btn-primary" id="toggleOrders">Show Orders</button>
   </div>
 
@@ -210,20 +215,18 @@
           <th scope="col">Total</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="ordersBody">
         <tr>
-          <td>White Chocolate</td>
-          <td>$5.00</td>
+          <td></td>
+          <td></td>
           <td>
             <div class="input-group">
-              <button class="btn btn-outline-light" type="button" id="button-minus">-</button>
-              <input type="text" class="form-control text-center" value="1" aria-label="Quantity">
-              <button class="btn btn-outline-light" type="button" id="button-plus">+</button>
+              
             </div>
           </td>
-          <td>$5.00</td>
+          <td></td>
         </tr>
-       
+    
       </tbody>
     </table>
   </div>
@@ -231,6 +234,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-<script src="./script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
