@@ -30,7 +30,7 @@ function handleAddClick() {
   let quantity = parseInt(quantityCell.textContent) + 1;
   quantityCell.textContent = quantity;
   totalCell.textContent = `$${(price * quantity).toFixed(2)}`;
-  calculateTotalPrice(); // Recalculez le total à chaque ajout
+  calculateTotalPrice(); // Recalcule le total à chaque ajout
 }
 
 // Fonction pour gérer les clics sur les boutons 'Delete'
@@ -38,21 +38,23 @@ function handleDeleteClick() {
   const row = this.parentElement.parentElement;
   const quantityCell = row.cells[2];
   let quantity = parseInt(quantityCell.textContent);
+  
   if (quantity > 1) {
+    // Réduit la quantité au lieu de supprimer la ligne
     quantity -= 1;
     quantityCell.textContent = quantity;
     const price = parseFloat(row.cells[1].textContent.replace('$', ''));
     row.cells[3].textContent = `$${(price * quantity).toFixed(2)}`;
   } else {
+    // Si la quantité est 1, demande confirmation pour supprimer
     if (confirm('Are you sure you want to delete this item?')) {
       row.remove();
+      calculateTotalPrice(); // Recalcule le total après suppression
     }
   }
-  calculateTotalPrice(); // Recalculez le total après suppression
-  if (document.querySelectorAll('#ordersBody tr').length === 0) { // Vérifiez s'il n'y a plus de produits
-    document.getElementById('ordersTable').style.display = 'none';
-    document.getElementById('noOrdersMessage').style.display = 'block';
-  }
+
+  // Affiche ou cache le message 'noOrdersMessage' en fonction du nombre de lignes
+  updateOrdersVisibility();
 }
 
 // Attache l'événement 'click' aux boutons d'ordre pour ajouter ou mettre à jour les produits
@@ -93,8 +95,8 @@ function addOrUpdateOrder(product, price) {
   }
 
   calculateTotalPrice();
-  document.getElementById('ordersTable').style.display = 'block';
-  document.getElementById('noOrdersMessage').style.display = 'none';
+  // Affiche ou cache le message 'noOrdersMessage' en fonction du nombre de lignes
+  updateOrdersVisibility();
 
   // Réattache les événements pour les nouveaux boutons ajoutés
   attachActionButtons();
@@ -110,17 +112,44 @@ function calculateTotalPrice() {
   document.getElementById('totalPriceDisplay').textContent = `$${totalPrice.toFixed(2)}`;
 }
 
-document.getElementById('toggleOrders').addEventListener('click', function() {
-  var ordersTable = document.getElementById('ordersTable');
-  var noOrdersMessage = document.getElementById('noOrdersMessage');
+function updateOrdersVisibility() {
+  const ordersTable = document.getElementById('ordersTable');
+  const noOrdersMessage = document.getElementById('noOrdersMessage');
 
-  if (ordersTable.style.display === 'none') {
-    ordersTable.style.display = 'block';
-    noOrdersMessage.style.display = 'none';
-    this.textContent = 'Hide Orders';
-  } else {
+  if (document.querySelectorAll('#ordersBody tr').length === 0) {
     ordersTable.style.display = 'none';
     noOrdersMessage.style.display = 'block';
-    this.textContent = 'Show Orders';
+  } else {
+    ordersTable.style.display = 'block';
+    noOrdersMessage.style.display = 'none';
   }
+}
+
+// Gestion du bouton de paiement
+document.getElementById('payButton').addEventListener('click', function () {
+  const totalPrice = document.getElementById('totalPriceDisplay').textContent;
+  const confirmation = confirm(`Total price is ${totalPrice}. Are you sure?`);
+  
+  if (confirmation) {
+    alert('Thank you for your order! You will receive a confirmation email regarding your delivery method.');
+  }
+});
+document.getElementById('searchForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Empêche le formulaire de se soumettre normalement
+
+  // Récupère la valeur de recherche
+  const query = document.getElementById('searchInput').value.toLowerCase();
+
+  // Sélectionne toutes les cartes de produits
+  const cards = document.querySelectorAll('.card');
+
+  // Parcourt chaque carte et la cache ou l'affiche en fonction de la recherche
+  cards.forEach(card => {
+    const title = card.querySelector('.card-title').textContent.toLowerCase();
+    if (title.includes(query)) {
+      card.style.display = 'block'; // Affiche la carte si elle correspond à la recherche
+    } else {
+      card.style.display = 'none'; // Cache la carte si elle ne correspond pas
+    }
+  });
 });
