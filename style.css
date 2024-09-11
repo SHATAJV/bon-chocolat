@@ -1,14 +1,82 @@
-
-  .carousel-item img {
-    height: 700px; 
-    object-fit: cover; 
-  }
+.carousel-item img {
+  height: 700px;
+  object-fit: cover;
+}
 
 .order-container {
   display: none; /* Hide the table by default */
 }
+
 .no-orders-message {
   text-align: center;
   font-size: 1.5rem;
   color: #888;
+}
+
+.table .btn {
+  margin: 0 5px;
+}
+/* Espacement des sections */
+section {
+  padding: 3rem 0;
+}
+
+/* Style pour les titres des sections */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Style des cartes */
+.card {
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  border-bottom: 1px solid #ddd;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Style pour les boutons de commande */
+.order-btn {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  background-color: #343a40;
+}
+
+footer .list-unstyled a {
+  text-decoration: none;
+}
+
+footer .list-unstyled a:hover {
+  text-decoration: underline;
+}
+
+.card {
+  height: 100%; /* Assure que toutes les cartes occupent la même hauteur */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-img-top {
+  max-height: 200px; /* Limite la hauteur de l'image */
+  object-fit: cover; /* Pour que les images conservent un bon rapport d'aspect */
+}
+
+.card-body {
+  flex-grow: 1; /* Permet au contenu textuel d'occuper l'espace restant */
+}
+
+.d-grid {
+  margin-top: auto; /* Place le bouton en bas */
 }
