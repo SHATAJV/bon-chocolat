@@ -3,84 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-... (ajoute l'intégrité ici si tu veux) ..." crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title>Bon Chocolate</title>
 </head>
 <body>
-<header>
-  <nav class="navbar navbar-dark text-bg-dark fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Bon Choco</a>
-   
-        <form id="searchForm" class="d-flex mt-3">
-          <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search name" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Bon Choco</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <form id="searchForm" class="d-flex ms-auto mb-2 mb-lg-0">
+                    <input id="searchInput" class="form-control me-2" type="search" placeholder="Search name"
+                        aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">New Arrivals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#promotion">Promotions</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Catalogue</a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="#catalogue">White Chocolate</a></li>
+                            <li><a class="dropdown-item" href="#catalogue">Dark Chocolate</a></li>
+                            <li><a class="dropdown-item" href="#catalogue">Milk Chocolate</a></li>
+                            <li><a class="dropdown-item" href="#catalogue">Chocolate Truffles</a></li>
+                            <li><a class="dropdown-item" href="#catalogue">Artisanal Chocolate</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#order"><i class="fas fa-shopping-cart"></i></a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#order">Orders</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">New Arrivals</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#promotion">Promotions</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Catalogue</a>
-              <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="#catalogue">White Chocolate</a></li>
-                <li><a class="dropdown-item" href="#catalogue">Dark Chocolate</a></li>
-                <li><a class="dropdown-item" href="#catalogue">Milk Chocolate</a></li>
-                <li><a class="dropdown-item" href="#catalogue">Chocolate Truffles</a></li>
-                <li><a class="dropdown-item" href="#catalogue">Artisanal Chocolate</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </nav>
+    </nav>
 </header>
 
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide mt-5">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="./img/logo.png" class="d-block w-100" alt="Bon Chocolate">
-      <div class="carousel-caption">
+      <img src="./img/background.png" class="d-block w-100" alt="Bon Chocolate">
+      <div class="carousel-caption d-none d-md-block">
         <button type="button" class="btn btn-secondary btn-lg">Sign Up</button>
         <a href="#catalogue"><button type="button" class="btn btn-secondary btn-lg">Catalogue</button></a>
       </div>   
     </div>
     <div class="carousel-item">
-      <img src="./img/promotion.png" class="d-block w-100" alt="Promotion">
-      <div class="carousel-caption">
-        <h1><p class="text-center">Special promotions you don't want to miss!</p></h1>
+      <img src="./img/carosel3.jpg" class="d-block w-100" alt="Promotion">
+      <div class="carousel-caption d-none d-md-block">
+        <h1 class="text-center">Special promotions you don't want to miss!</h1>
         <a href="#promotion"><button type="button" class="btn btn-secondary btn-lg">Promotions</button></a>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="./img/news.png" class="d-block w-100" alt="News">
-      <div class="carousel-caption">
-        <h1><p class="text-center">Be the first to discover our new arrivals!</p></h1>
+      <img src="./img/carosel3.jpg" class="d-block w-100" alt="News">
+      <div class="carousel-caption d-none d-md-block">
+        <h1 class="text-center">Be the first to discover our new arrivals!</h1>
         <button type="button" class="btn btn-secondary btn-lg">New Arrivals</button>
       </div>
     </div>
@@ -95,145 +90,288 @@
   </button>
 </div>  
 
-<h1 class="text-center mt-5" id="promotion">Promotion</h1>
-
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <img src="./img/logo.png" class="card-img-top" alt="White Chocolate">
-        <div class="card-body">
-          <h5 class="card-title">CLASS ROOM!</h5>
-          <p class="card-text">Discover our class of learning how to make cakes.</p>
-          <a href="#order" class="btn btn-dark">More information</a>
+<section id="promotion" class="my-5">
+  <h1 class="text-center mb-4">Promotion</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="./img/carosselle2.jpg" class="card-img-top" alt="White Chocolate">
+          <div class="card-body">
+            <h5 class="card-title">CLASS ROOM!</h5>
+            <p class="card-text">Discover our class of learning how to make cakes.</p>
+            <a href="#order" class="btn btn-dark">More information</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-4">
-      <div class="card">
-        <img src="./img/6.png" class="card-img-top" alt="Dark Chocolate">
-        <div class="card-body">
-          <h5 class="card-title">Dark Chocolate</h5>
-          <p class="card-text">%30 promotion of second tablette.</p>
-          <a href="#order" class="btn btn-dark">More information</a>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="./img/emy-Rx3QSrG1coc-unsplash.jpg" class="card-img-top" alt="Dark Chocolate">
+          <div class="card-body">
+            <h5 class="card-title">Dark Chocolate</h5>
+            <p class="card-text">%30 promotion of second tablette.</p>
+            <a href="#order" class="btn btn-dark">More information</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-    <h1 class="text-center mt-5" id="catalogue">Catalogue</h1>
-
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="./img/5.png" class="card-img-top" alt="White Chocolate">
-                    <div class="card-body">
-                        <h5 class="card-title">White Chocolate</h5>
-                        <p class="card-text">Discover our creamy white chocolate, perfect for those who love subtle sweetness.</p>
-                        <div class="d-grid gap-3 d-md-flex justify-content-md-end">price: 5.00$
-                          <a href="#order" class="btn btn-dark order-btn" data-product="White Chocolate" data-price="5.00">Order</a>
-                        </div>
-                    </div>
-                </div>
+</section>
+<section id="catalogue" class="my-5">
+  <h1 class="text-center mb-4">Catalogue</h1>
+  <div class="container">
+    <div class="row">
+      <!-- Produit 1 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="./img/heather-barnes-xatIo9Ksfb0-unsplash.jpg" class="card-img-top" alt="White Chocolate">
+          <div class="card-body">
+            <h5 class="card-title">White Chocolate</h5>
+            <p class="card-text">Discover our creamy white chocolate, perfect for those who love subtle sweetness.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <span class="text-muted">Price: $5.00</span>
+              <a href="#order" class="btn btn-dark order-btn" data-product="White Chocolate" data-price="5.00">Order</a>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="./img/6.png" class="card-img-top" alt="Dark Chocolate">
-                    <div class="card-body">
-                        <h5 class="card-title">Dark Chocolate</h5>
-                        <p class="card-text">An intense dark chocolate, rich in cocoa for an unforgettable taste experience.</p>
-                        <div class="d-grid gap-3 d-md-flex justify-content-md-end">price: 7.00$
-                          <a href="#order" class="btn btn-dark order-btn" data-product="Dark Chocolate" data-price="7.00">Order</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="./img/7.png" class="card-img-top" alt="Milk Chocolate">
-                    <div class="card-body">
-                        <h5 class="card-title">Milk Chocolate</h5>
-                        <p class="card-text">A smooth milk chocolate that melts in your mouth, loved by all ages.</p>
-                        <div class="d-grid gap-3 d-md-flex justify-content-md-end">price: 6.00$
-                          <a href="#order" class="btn btn-dark order-btn" data-product="Milk Chocolate" data-price="6.00">Order</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-        <div class="row mt-4">
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="./img/8.png" class="card-img-top" alt="Chocolate Truffles">
-                    <div class="card-body">
-                        <h5 class="card-title">Chocolate Truffles</h5>
-                        <p class="card-text">Our chocolate truffles are a true delight for the senses, perfect for special occasions.</p>
-                        <div class="d-grid gap-3 d-md-flex justify-content-md-end">price: 10.00$
-                          <a href="#order" class="btn btn-dark order-btn" data-product="Chocolate Truffles" data-price="10.00">Order</a>
-                        </div>
-                    </div>
-                </div>
+      </div>
+
+      <!-- Produit 2 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="./img/irene-kredenets-wRY_4FGnDIM-unsplash.jpg" class="card-img-top" alt="Dark Chocolate">
+          <div class="card-body">
+            <h5 class="card-title">Dark Chocolate</h5>
+            <p class="card-text">Rich and intense dark chocolate for the true connoisseur.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <span class="text-muted">Price: $6.00</span>
+              <a href="#order" class="btn btn-dark order-btn" data-product="Dark Chocolate" data-price="6.00">Order</a>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="./img/7.png" class="card-img-top" alt="Artisanal Chocolate">
-                    <div class="card-body">
-                        <h5 class="card-title">Artisanal Chocolate</h5>
-                        <p class="card-text">Each piece is handcrafted, offering a unique touch to every bite.</p>
-                        <div class="d-grid gap-3 d-md-flex justify-content-md-end">price: 12.00$
-                          <a href="#order" class="btn btn-dark order-btn" data-product="Artisanal Chocolate" data-price="10.00">Order</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Produit 3 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="./img/american-heritage-chocolate-vdx5hPQhXFk-unsplash.jpg" class="card-img-top" alt="Milk Chocolate">
+          <div class="card-body">
+            <h5 class="card-title">Milk Chocolate</h5>
+            <p class="card-text">Smooth milk chocolate with a delightful creamy flavor.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <span class="text-muted">Price: $4.50</span>
+              <a href="#order" class="btn btn-dark order-btn" data-product="Milk Chocolate" data-price="4.50">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produit 4 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="./img/ilinca-roman-GXlA4yPzFxk-unsplash.jpg" class="card-img-top" alt="Chocolate Truffles">
+          <div class="card-body">
+            <h5 class="card-title">Chocolate Truffles</h5>
+            <p class="card-text">Decadent truffles with a rich, velvety filling.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <span class="text-muted">Price: $8.00</span>
+              <a href="#order" class="btn btn-dark order-btn" data-product="Chocolate Truffles" data-price="8.00">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produit 5 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="./img/kyaw-tun-ssG41C6mwrQ-unsplash.jpg" class="card-img-top" alt="Artisanal Chocolate">
+          <div class="card-body">
+            <h5 class="card-title">Artisanal Chocolate</h5>
+            <p class="card-text">Handcrafted chocolate with unique and bold flavors.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <span class="text-muted">Price: $10.00</span>
+              <a href="#order" class="btn btn-dark order-btn" data-product="Artisanal Chocolate" data-price="10.00">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produit 6 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="./img/maddi-bazzocco-MjZq7A2RJxQ-unsplash.jpg" class="card-img-top" alt="Chocolate Bars">
+          <div class="card-body">
+            <h5 class="card-title">Chocolate Bars</h5>
+            <p class="card-text">Classic chocolate bars in a variety of flavors.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <span class="text-muted">Price: $7.00</span>
+              <a href="#order" class="btn btn-dark order-btn" data-product="Chocolate Bars" data-price="7.00">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produit 7 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="./img/monika-grabkowska-0rf3k5tms_0-unsplash.jpg" class="card-img-top" alt="White Chocolate Bark">
+          <div class="card-body">
+            <h5 class="card-title">White Chocolate Bark</h5>
+            <p class="card-text">Crispy white chocolate bark with nuts and dried fruits.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <span class="text-muted">Price: $6.50</span>
+              <a href="#order" class="btn btn-dark order-btn" data-product="White Chocolate Bark" data-price="6.50">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produit 8 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="./img/amirali-mirhashemian-RCVIlSXhYI0-unsplash.jpg" class="card-img-top" alt="Caramel Chocolates">
+          <div class="card-body">
+            <h5 class="card-title">Caramel Chocolates</h5>
+            <p class="card-text">Luxurious chocolate with a gooey caramel center.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <span class="text-muted">Price: $7.50</span>
+              <a href="#order" class="btn btn-dark order-btn" data-product="Caramel Chocolates" data-price="7.50">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produit 9 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="./img/maddi-bazzocco-MjZq7A2RJxQ-unsplash.jpg" class="card-img-top" alt="Peppermint Chocolate">
+          <div class="card-body">
+            <h5 class="card-title">Peppermint Chocolate</h5>
+            <p class="card-text">Refreshing peppermint infused chocolate for a unique taste experience.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <span class="text-muted">Price: $5.50</span>
+              <a href="#order" class="btn btn-dark order-btn" data-product="Peppermint Chocolate" data-price="5.50">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produit 10 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="./img/alina-parache-BypPgofw-1w-unsplash.jpg" class="card-img-top" alt="Fruit Chocolates">
+          <div class="card-body">
+            <h5 class="card-title">Fruit Chocolates</h5>
+            <p class="card-text">Delightful chocolates with an assortment of dried fruits.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <span class="text-muted">Price: $8.50</span>
+              <a href="#order" class="btn btn-dark order-btn" data-product="Fruit Chocolates" data-price="8.50">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produit 11 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="./img/ilinca-roman-GXlA4yPzFxk-unsplash.jpg" class="card-img-top" alt="Nut Chocolates">
+          <div class="card-body">
+            <h5 class="card-title">Nut Chocolates</h5>
+            <p class="card-text">Crunchy nuts enrobed in rich chocolate.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <span class="text-muted">Price: $6.00</span>
+              <a href="#order" class="btn btn-dark order-btn" data-product="Nut Chocolates" data-price="6.00">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produit 12 -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="./img/kyaw-tun-ssG41C6mwrQ-unsplash.jpg" class="card-img-top" alt="Spicy Chocolates">
+          <div class="card-body">
+            <h5 class="card-title">Spicy Chocolates</h5>
+            <p class="card-text">Exciting chocolates with a hint of spice.</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <span class="text-muted">Price: $7.00</span>
+              <a href="#order" class="btn btn-dark order-btn" data-product="Spicy Chocolates" data-price="7.00">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <h1 class="text-center mt-5" id="order">Orders</h1>
 
-    <div class="container mt-4">
-      
-
-        <div class="no-orders-message" id="noOrdersMessage">
-            There are no orders.
-            <img src="./img/anim.png" height="60" width="60" alt="there is no order">
-        </div>
-
-        <div class="order-container" id="ordersTable">
-          <table id="ordersTable" class="table table-hover">
-            <thead>
-              <tr>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody id="ordersBody">
-           
-            </tbody>
-          </table>
-          
-          <p>Total: <span id="totalPriceDisplay">$0.00</span></p>
-          <button class="btn btn-dark" id="payButton">Payer</button>
-
-          
-        </div>
+<section id="order" class="my-5">
+  <h1 class="text-center mb-4">Orders</h1>
+  <div class="container">
+    <div class="no-orders-message" id="noOrdersMessage">
+      There are no orders.
+      <img src="./img/anim.png" height="60" width="60" alt="there is no order">
     </div>
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-4">
-      <p class="mb-0">© 2024 Mon Site. Tous droits réservés.</p>
-      <p class="mb-0">
-        <a href="#" class="text-white">Mentions légales</a> | <a href="#" class="text-white">Politique de confidentialité</a>
-      </p>
-    </footer>
+    <div class="order-container" id="ordersTable">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="ordersBody"></tbody>
+      </table>
+      <p>Total: <span id="totalPriceDisplay">$0.00</span></p>
+      <button class="btn btn-dark" id="payButton">Payer</button>
+    </div>
+  </div>
+</section>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+<footer class="bg-dark text-white text-center py-4 mt-5">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <h5 class="mb-3">Bon Choco</h5>
+        <p>Your destination for the finest chocolates. Explore our wide range of exquisite products.</p>
+      </div>
+      <div class="col-md-6">
+        <h5 class="mb-3" id="contact">Contact</h5>
+        <ul class="list-unstyled">
+          <li><a href="mailto:contact@bonchocolate.com" class="text-white">contact@bonchocolate.com</a></li>
+          <li><a href="tel:+123456789" class="text-white">+123 456 789</a></li>
+          <li><a href="https://www.google.com/maps" class="text-white" target="_blank">31000, Toulouse</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col">
+        <h5 class="mb-3">Suivez-nous</h5>
+        <div class="d-flex justify-content-center">
+          <a href="#" class="text-white me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p class="mb-0">&copy; 2024 Bon Chocolate. Tous droits réservés.</p>
+        <p class="mb-0">
+          <a href="#" class="text-white">Mentions légales</a> | <a href="#" class="text-white">Politique de confidentialité</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<script src="script.js"></script>
 </body>
 </html>
