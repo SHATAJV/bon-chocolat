@@ -1,14 +1,18 @@
-
-  .carousel-item img {
-    height: 700px; 
-    object-fit: cover; 
-  }
+.carousel-item img {
+  height: 700px;
+  object-fit: cover;
+}
 
 .order-container {
   display: none; /* Hide the table by default */
 }
+
 .no-orders-message {
   text-align: center;
   font-size: 1.5rem;
   color: #888;
+}
+
+.table .btn {
+  margin: 0 5px;
 }
