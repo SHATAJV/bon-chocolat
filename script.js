@@ -79,8 +79,8 @@ document.addEventListener('DOMContentLoaded', function() {
     <h1 class="text-center mb-4">Promotion</h1>
     <div class="container">
       <div class="row">
-        ${createProductCard('./img/carosselle2.jpg', 'CLASS ROOM!', 'Discover our class of learning how to make cakes.', '50.00', 'More information')}
-        ${createProductCard('./img/emy-Rx3QSrG1coc-unsplash.jpg', 'Dark Chocolate', '%30 promotion of tablette for prime member.', '5.10', 'More information')}
+        ${createProductCard('./img/carosselle2.jpg', 'CLASS ROOM!', 'Discover our class of learning how to make cakes.', '50.00', 'try it ')}
+        ${createProductCard('./img/emy-Rx3QSrG1coc-unsplash.jpg', 'Dark Chocolate', '%30 promotion of tablette for prime member.', '5.10', 'try it')}
       </div>
     </div>
   `;
