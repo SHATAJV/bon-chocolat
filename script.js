@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+
   // Données du catalogue organisées par catégorie
   const catalogueData = {
     "White Chocolate": [
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function createCategorySection(categoryName, products) {
     const productCards = products.map(product => createProductCard(product.imgSrc, product.title, product.text, product.price, 'Order')).join('');
     return `
-      <h2 class="text-center mb-4" >${categoryName}</h2>
+      <h2 class="text-center mb-4">${categoryName}</h2>
       <div class="container">
         <div class="row">
           ${productCards}
@@ -73,43 +74,44 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Afficher le contenu des promotions
+  // Affichage des promotions
   document.querySelector('#promotion').innerHTML = `
     <h1 class="text-center mb-4">Promotion</h1>
     <div class="container">
       <div class="row">
         ${createProductCard('./img/carosselle2.jpg', 'CLASS ROOM!', 'Discover our class of learning how to make cakes.', '50.00', 'More information')}
-        ${createProductCard('./img/emy-Rx3QSrG1coc-unsplash.jpg', 'Dark Chocolate', '%30 promotion of  tablette for prime member.', '5.10', 'More information')}
+        ${createProductCard('./img/emy-Rx3QSrG1coc-unsplash.jpg', 'Dark Chocolate', '%30 promotion of tablette for prime member.', '5.10', 'More information')}
       </div>
     </div>
   `;
 
-  // Afficher le catalogue par défaut
+  // Affichage du catalogue par défaut
   displayCatalogue();
 
-  //Gestion des clics sur les boutons de filtrage
-  document.getElementById('filterMenu').addEventListener('click', function(event) {
-    if (event.target.classList.contains('filter-btn')) {
-      const category = event.target.getAttribute('data-category');
+  // Gestion des clics sur les boutons de filtre
+  document.querySelectorAll('.filter-category').forEach(button => {
+    button.addEventListener('click', function() {
+      const category = this.getAttribute('data-category');
       displayCatalogueByCategory(category);
-    }
+    });
   });
 
+  // Attacher les événements aux boutons de commande
   function attachOrderButtonEvents() {
     document.querySelectorAll('.order-btn').forEach(button => {
       button.addEventListener('click', function (event) {
-        event.preventDefault(); // Pour empêcher le comportement par défaut des liens.
+        event.preventDefault(); // Empêcher le comportement par défaut
         const productName = this.getAttribute('data-product');
         const productPrice = parseFloat(this.getAttribute('data-price'));
         addOrUpdateOrder(productName, productPrice);
       });
     });
   }
-  
+
+  // Ajouter ou mettre à jour une commande
   function addOrUpdateOrder(product, price) {
     const ordersBody = document.getElementById('ordersBody');
     let existingRow = Array.from(ordersBody.querySelectorAll('tr')).find(row => row.cells[0].textContent === product);
-  
     if (existingRow) {
       // Le produit existe déjà, augmenter la quantité
       const quantityCell = existingRow.cells[2].querySelector('input');
@@ -125,116 +127,64 @@ document.addEventListener('DOMContentLoaded', function() {
         <td>$${price.toFixed(2)}</td>
         <td><input type="number" class="form-control quantity" value="1" min="1"></td>
         <td>$${price.toFixed(2)}</td>
-        <td>
-          <button class="btn btn-success btn-sm add-btn">Add</button>
-          <button class="btn btn-danger btn-sm delete-btn">Delete</button>
-        </td>
+        <td><button class="btn btn-danger btn-sm delete-btn">Delete</button></td>
       `;
       ordersBody.appendChild(row);
+      row.querySelector('.delete-btn').addEventListener('click', handleDeleteClick);
+      row.querySelector('.quantity').addEventListener('change', handleQuantityChange); // Ajouter l'événement de changement de quantité
     }
-  
     calculateTotalPrice();
     updateOrdersVisibility();
-  
-    // Réattacher les événements pour les nouveaux boutons ajoutés
-    attachActionButtons();
   }
-  
-  function attachActionButtons() {
-    // Attache les nouveaux gestionnaires d'événements 'Add'
-    document.querySelectorAll('.add-btn').forEach(button => {
-      button.addEventListener('click', handleAddClick);
-    });
-  
-    // Attache les nouveaux gestionnaires d'événements 'Delete'
-    document.querySelectorAll('.delete-btn').forEach(button => {
-      button.addEventListener('click', handleDeleteClick);
-    });
-  }
-  
-  function handleAddClick() {
+
+  // Gestion du changement de quantité du produit
+  function handleQuantityChange() {
     const row = this.closest('tr');
-    const quantityCell = row.cells[2].querySelector('input');
-    const totalCell = row.cells[3];
     const price = parseFloat(row.cells[1].textContent.replace('$', ''));
-    let quantity = parseInt(quantityCell.value) + 1;
-    quantityCell.value = quantity;
-    totalCell.textContent = `$${(price * quantity).toFixed(2)}`;
-    calculateTotalPrice(); // Recalcule le total à chaque ajout
+    const quantity = parseInt(this.value);
+    row.cells[3].textContent = `$${(price * quantity).toFixed(2)}`;
+    calculateTotalPrice();
   }
-  
+
+  // Gestion du clic sur le bouton 'Delete'
   function handleDeleteClick() {
     const row = this.closest('tr');
-    const quantityCell = row.cells[2].querySelector('input');
-    let quantity = parseInt(quantityCell.value);
-    
-    if (quantity > 1) {
-      // Réduit la quantité au lieu de supprimer la ligne
-      quantity -= 1;
-      quantityCell.value = quantity;
-      const price = parseFloat(row.cells[1].textContent.replace('$', ''));
-      row.cells[3].textContent = `$${(price * quantity).toFixed(2)}`;
-      calculateTotalPrice(); // Recalcule le total à chaque ajout
-    } else {
-      // Si la quantité est 1, demande confirmation pour supprimer
-      if (confirm('Are you sure you want to delete this item?')) {
-        row.remove();
-        calculateTotalPrice(); // Recalcule le total après suppression
-      }
-    }
-  
-    // Affiche ou cache le message 'noOrdersMessage' en fonction du nombre de lignes
+    row.remove();
+    calculateTotalPrice();
     updateOrdersVisibility();
   }
-  
+
+  // Calculer le prix total
   function calculateTotalPrice() {
-    let totalPrice = 0;
-    document.querySelectorAll('#ordersBody tr').forEach(row => {
-      const totalCell = row.cells[3];
-      totalPrice += parseFloat(totalCell.textContent.replace('$', ''));
-    });
-  
-    document.getElementById('totalPriceDisplay').textContent = `$${totalPrice.toFixed(2)}`;
+    const totalPriceElement = document.getElementById('totalPriceDisplay');
+    const total = Array.from(document.querySelectorAll('#ordersBody tr'))
+      .reduce((acc, row) => acc + parseFloat(row.cells[3].textContent.replace('$', '')), 0);
+    totalPriceElement.textContent = `$${total.toFixed(2)}`;
   }
-  
+
+  // Mettre à jour l'affichage des commandes
   function updateOrdersVisibility() {
-    const ordersTable = document.getElementById('ordersTable');
-    const noOrdersMessage = document.getElementById('noOrdersMessage');
-  
-    if (document.querySelectorAll('#ordersBody tr').length === 0) {
-      ordersTable.style.display = 'none';
-      noOrdersMessage.style.display = 'block';
-    } else {
-      ordersTable.style.display = 'block';
-      noOrdersMessage.style.display = 'none';
-    }
+    const ordersContainer = document.getElementById('ordersTable');
+    const hasOrders = document.querySelectorAll('#ordersBody tr').length > 0;
+    ordersContainer.style.display = hasOrders ? 'block' : 'none';
+    document.getElementById('noOrdersMessage').style.display = hasOrders ? 'none' : 'block';
   }
-  
-  // Gestion du bouton de paiement
-  
-    document.getElementById('payButton').addEventListener('click', function () {
-      
-      let totalPrice = document.getElementById('totalPriceDisplay').textContent;
-      totalPrice = totalPrice.replace('$', '');  // 
-  
-      const confirmation = confirm(`Le prix total est de ${totalPrice}. are you sure ?`);
-  
-      if (confirmation) {
-        alert('thank you for you order . we will send an email for diffrent type of delivery.');
-      }
-    });
-  
-  // Gestion du formulaire de recherche
+
+  // Gestion du clic sur le bouton de paiement
+  document.getElementById('payButton').addEventListener('click', function () {
+    let totalPrice = document.getElementById('totalPriceDisplay').textContent;
+    totalPrice = totalPrice.replace('$', '');
+    const confirmation = confirm(`The total price is $${totalPrice}. Are you sure?`);
+    if (confirmation) {
+      alert('Thank you for your order. We will send an email for delivery options.');
+    }
+  });
+
+  // Gestion de l'envoi du formulaire de recherche
   document.getElementById('searchForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Empêche le formulaire de se soumettre normalement
-  
-    // Récupère la valeur de recherche
+    event.preventDefault(); // Empêcher l'envoi du formulaire par défaut
     const query = document.getElementById('searchInput').value.toLowerCase();
-  
-    // Sélectionne toutes les cartes de produits
     const cards = document.querySelectorAll('.card');
-  
-    // Parcourt chaque carte et la cache ou l'affiche en fonction de la recherche
     cards.forEach(card => {
       const title = card.querySelector('.card-title').textContent.toLowerCase();
       card.style.display = title.includes(query) ? 'block' : 'none';
