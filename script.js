@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Afficher le catalogue par défaut
   displayCatalogue();
 
-  // Gestion des clics sur les boutons de filtrage
+  //Gestion des clics sur les boutons de filtrage
   document.getElementById('filterMenu').addEventListener('click', function(event) {
     if (event.target.classList.contains('filter-btn')) {
       const category = event.target.getAttribute('data-category');
