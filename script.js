@@ -78,8 +78,8 @@ document.addEventListener('DOMContentLoaded', function() {
     <h1 class="text-center mb-4">Promotion</h1>
     <div class="container">
       <div class="row">
-        ${createProductCard('./img/carosselle2.jpg', 'CLASS ROOM!', 'Discover our class of learning how to make cakes.', '0.00', 'More information')}
-        ${createProductCard('./img/emy-Rx3QSrG1coc-unsplash.jpg', 'Dark Chocolate', '%30 promotion of second tablette.', '0.00', 'More information')}
+        ${createProductCard('./img/carosselle2.jpg', 'CLASS ROOM!', 'Discover our class of learning how to make cakes.', '50.00', 'More information')}
+        ${createProductCard('./img/emy-Rx3QSrG1coc-unsplash.jpg', 'Dark Chocolate', '%30 promotion of  tablette for prime member.', '5.10', 'More information')}
       </div>
     </div>
   `;
@@ -211,14 +211,18 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Gestion du bouton de paiement
-  document.getElementById('payButton').addEventListener('click', function () {
-    const totalPrice = document.getElementById('totalPriceDisplay').textContent;
-    const confirmation = confirm(`Total price is ${totalPrice}. Are you sure?`);
-    
-    if (confirmation) {
-      alert('Thank you for your order! You will receive a confirmation email regarding your delivery method.');
-    }
-  });
+  
+    document.getElementById('payButton').addEventListener('click', function () {
+      
+      let totalPrice = document.getElementById('totalPriceDisplay').textContent;
+      totalPrice = totalPrice.replace('$', '');  // 
+  
+      const confirmation = confirm(`Le prix total est de ${totalPrice}. are you sure ?`);
+  
+      if (confirmation) {
+        alert('thank you for you order . we will send an email for diffrent type of delivery.');
+      }
+    });
   
   // Gestion du formulaire de recherche
   document.getElementById('searchForm').addEventListener('submit', function(event) {
